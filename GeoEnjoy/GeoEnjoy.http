@@ -1,0 +1,6 @@
+@GeoEnjoy_HostAddress = http://localhost:5058
+
+GET {{GeoEnjoy_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

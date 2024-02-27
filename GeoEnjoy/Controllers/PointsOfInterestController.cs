@@ -10,20 +10,14 @@ namespace GeoEnjoy.WebApi.Controllers
     [Route("api/points-of-interest")]
     [ApiController]
     [AutoValidateAntiforgeryToken]
-    public class PointsOfInterestController : ControllerBase
+    public class PointsOfInterestController(
+        IReadOnlyPointService readOnlyPoints) : ControllerBase
     {
-        private readonly IReadOnlyPointService _readOnlyPoints;
-
-        public PointsOfInterestController(IReadOnlyPointService readOnlyPoints)
-        {
-            _readOnlyPoints = readOnlyPoints;
-        }
-
         [HttpPost("in-radius")]
         [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
         public async Task<IActionResult> GetInRadiusAsync([FromBody] RadiusDto request)
         {
-            var result = await _readOnlyPoints.GetInRadiusAsync(request);
+            var result = await readOnlyPoints.GetInRadiusAsync(request);
 
             return result.ToActionResult();
         }
@@ -32,7 +26,7 @@ namespace GeoEnjoy.WebApi.Controllers
         [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
         public async Task<IActionResult> GetInRadiusAsync([FromBody] GetOwnPointsOfInterestRequest request)
         {
-            var result = await _readOnlyPoints.GetOwnAsync(request);
+            var result = await readOnlyPoints.GetOwnAsync(request);
 
             return result.ToActionResult();
         }

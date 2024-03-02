@@ -1,8 +1,8 @@
 ﻿using FluentResults;
 
-namespace GeoEnjoy.Application.Services.PointsOfInterest
+namespace GeoEnjoy.Application.Services
 {
-    public interface IPointSocialActivitiesService
+    public interface ISocialActivitiesService
     {
         Task<Result> RemoveSocialActivitiesAsync(Guid id);
         Task<Result> LikeAsync(Guid id);

@@ -12,7 +12,5 @@ public interface IReviewService
 
     Task<Result<ReviewResponse?>> GetOwnReviewAsync(Guid pointId);
 
-    Task<Result> LikeAsync(Guid id);
-    Task<Result> DislikeAsync(Guid id);
     Task<Result> DeleteAsync(Guid id);
 }

@@ -1,5 +1,5 @@
 ﻿using GeoEnjoy.Application.Contracts.Response;
-using GeoEnjoy.Application.Services.PointsOfInterest;
+using GeoEnjoy.Application.Services;
 using GeoEnjoy.WebApi.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +10,7 @@ namespace GeoEnjoy.WebApi.Controllers
     [Authorize]
     [ApiController]
     public class SocialActivitiesController(
-        IPointSocialActivitiesService pointSocialActivities) : ControllerBase
+        ISocialActivitiesService pointSocialActivities) : ControllerBase
     {
         [HttpDelete("points/{pointId}")]
         [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]

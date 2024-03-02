@@ -7,7 +7,6 @@ using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Application.Sortings;
 using GeoEnjoy.Domain;
 using ReviewSpec = GeoEnjoy.Application.Specifications.ReviewSpecifications;
-using SocialSpec = GeoEnjoy.Application.Specifications.UserSocialActivitySpecifications;
 
 namespace GeoEnjoy.Application.Services.Reviews;
 
@@ -115,118 +114,6 @@ public class ReviewService(
         var response = mapping.Map<List<ReviewResponse>>(sortedReviews);
 
         return Result.Ok(response);
-    }
-
-    public async Task<Result> DislikeAsync(Guid id)
-    {
-        var review = await repository.Reviews.FindByIdAsync
-        (
-            id: id,
-            cancellationToken: tokenProvider.CancellationToken
-        );
-
-        if (review == null)
-        {
-            return Result.Fail(GeoEnjoyErrors.ReviewNotFound());
-        }
-
-        var currentUserId = currentUser.Id;
-
-        if (review.ReviewerId == currentUserId)
-        {
-            return Result.Fail(GeoEnjoyErrors.ForbiddenLikeOrDislikeOwnReview());
-        }
-
-        var condition = SocialSpec.ByEntityId(id) & SocialSpec.ByUserId(currentUserId);
-
-        var activity = await repository.UserSocialActivities.FindOneBySpecAsync
-        (
-            spec: condition,
-            cancellationToken: tokenProvider.CancellationToken
-        );
-
-        if (activity == null)
-        {
-            activity = new UserSocialActivity
-            {
-                Id = id,
-                UserId = currentUserId,
-                ActivityType = SocialActivityType.Dislike,
-                EntityType = SocialEntityType.Review
-            };
-
-            repository.UserSocialActivities.Add(activity);
-
-            await repository.SaveChangesAsync(tokenProvider.CancellationToken);
-
-            return Result.Ok();
-        }
-
-        activity.ActivityType = SocialActivityType.Dislike;
-        activity.EntityType = SocialEntityType.Review;
-        activity.Created = DateTime.UtcNow;
-
-        repository.UserSocialActivities.Update(activity);
-
-        await repository.SaveChangesAsync(tokenProvider.CancellationToken);
-
-        return Result.Ok();
-    }
-
-    public async Task<Result> LikeAsync(Guid id)
-    {
-        var review = await repository.Reviews.FindByIdAsync
-        (
-            id: id,
-            cancellationToken: tokenProvider.CancellationToken
-        );
-
-        if (review == null)
-        {
-            return Result.Fail(GeoEnjoyErrors.ReviewNotFound());
-        }
-
-        var currentUserId = currentUser.Id;
-
-        if (review.ReviewerId == currentUserId)
-        {
-            return Result.Fail(GeoEnjoyErrors.ForbiddenLikeOrDislikeOwnReview());
-        }
-
-        var condition = SocialSpec.ByEntityId(id) & SocialSpec.ByUserId(currentUserId);
-
-        var activity = await repository.UserSocialActivities.FindOneBySpecAsync
-        (
-            spec: condition,
-            cancellationToken: tokenProvider.CancellationToken
-        );
-
-        if (activity == null)
-        {
-            activity = new UserSocialActivity
-            {
-                Id = id,
-                UserId = currentUserId,
-                ActivityType = SocialActivityType.Like,
-                EntityType = SocialEntityType.Review
-            };
-
-            repository.UserSocialActivities.Add(activity);
-
-            await repository.SaveChangesAsync(tokenProvider.CancellationToken);
-
-            return Result.Ok();
-        }
-
-        activity.ActivityType = SocialActivityType.Like;
-        activity.EntityType = SocialEntityType.Review;
-        activity.Created = DateTime.UtcNow;
-
-        repository.UserSocialActivities.Update(activity);
-
-        await repository.SaveChangesAsync(tokenProvider.CancellationToken);
-
-        return Result.Ok();
     }
 
     public async Task<Result<ReviewResponse?>> GetOwnReviewAsync(Guid pointId)

@@ -1,11 +1,13 @@
 ﻿using GeoEnjoy.Application.Contracts.Response;
 using GeoEnjoy.Application.Services.PointsOfInterest;
 using GeoEnjoy.WebApi.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeoEnjoy.WebApi.Controllers
 {
     [Route("api/social-activities")]
+    [Authorize]
     [ApiController]
     public class SocialActivitiesController(
         IPointSocialActivitiesService pointSocialActivities) : ControllerBase

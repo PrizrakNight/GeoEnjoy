@@ -14,40 +14,8 @@ namespace GeoEnjoy.WebApi.Controllers;
 [AutoValidateAntiforgeryToken]
 public class PointsOfInterestController(
     IReadOnlyPointService readOnlyPoints,
-    IWriteOnlyPointService writeOnlyPoints,
-    IPointSocialActivitiesService pointSocialActivities) : ControllerBase
+    IWriteOnlyPointService writeOnlyPoints) : ControllerBase
 {
-    #region SocialActivities
-
-    [HttpDelete("{pointId}/social-activities")]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-    public async Task<IActionResult> RemoveSocialActivities(Guid pointId)
-    {
-        var result = await pointSocialActivities.RemoveSocialActivitiesAsync(pointId);
-
-        return result.ToActionResult();
-    }
-
-    [HttpPost("{pointId}/social-activities/like")]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-    public async Task<IActionResult> Like(Guid pointId)
-    {
-        var result = await pointSocialActivities.LikeAsync(pointId);
-
-        return result.ToActionResult();
-    }
-
-    [HttpPost("{pointId}/social-activities/dislike")]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-    public async Task<IActionResult> Dislike(Guid pointId)
-    {
-        var result = await pointSocialActivities.DislikeAsync(pointId);
-
-        return result.ToActionResult();
-    }
-
-    #endregion
-
     [HttpPost("{pointId}/set-public")]
     [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
     public async Task<IActionResult> SetPublic(Guid pointId,

@@ -1,8 +1,7 @@
-﻿namespace GeoEnjoy.Application.Dto
+﻿namespace GeoEnjoy.Application.Dto;
+
+public class PointDto
 {
-    public class PointDto
-    {
-        public double Longitude { get; set; }
-        public double Latitude { get; set; }
-    }
+    public double Longitude { get; set; }
+    public double Latitude { get; set; }
 }

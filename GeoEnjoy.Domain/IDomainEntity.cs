@@ -1,7 +1,6 @@
-﻿namespace GeoEnjoy.Domain
+﻿namespace GeoEnjoy.Domain;
+
+public interface IDomainEntity
 {
-    public interface IDomainEntity
-    {
-        Guid Id { get; set; }
-    }
+    Guid Id { get; set; }
 }

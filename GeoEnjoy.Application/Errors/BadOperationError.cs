@@ -1,12 +1,11 @@
 ﻿using FluentResults;
 
-namespace GeoEnjoy.Application.Errors
+namespace GeoEnjoy.Application.Errors;
+
+public class BadOperationError : Error
 {
-    public class BadOperationError : Error
+    public BadOperationError(string? message = null)
     {
-        public BadOperationError(string? message = null)
-        {
-            Message = message;
-        }
+        Message = message;
     }
 }

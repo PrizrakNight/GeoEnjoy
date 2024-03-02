@@ -1,15 +1,14 @@
 ﻿using GeoEnjoy.Domain;
 
-namespace GeoEnjoy.Application.Repositories
+namespace GeoEnjoy.Application.Repositories;
+
+public interface IGeoEnjoyRepository
 {
-    public interface IGeoEnjoyRepository
-    {
-        IRepository<Review> Reviews { get; }
+    IRepository<Review> Reviews { get; }
 
-        IUserSocialActivityRepository UserSocialActivities { get; }
-        IFavoritePointOfInterestRepository FavoritePointsOfInterest { get; }
-        IPointOfInterestRepository PointsOfInterest { get; }
+    IUserSocialActivityRepository UserSocialActivities { get; }
+    IFavoritePointOfInterestRepository FavoritePointsOfInterest { get; }
+    IPointOfInterestRepository PointsOfInterest { get; }
 
-        ValueTask SaveChangesAsync(CancellationToken cancellationToken = default);
-    }
+    ValueTask SaveChangesAsync(CancellationToken cancellationToken = default);
 }

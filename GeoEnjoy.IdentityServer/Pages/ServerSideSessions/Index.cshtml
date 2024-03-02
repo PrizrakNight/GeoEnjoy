@@ -12,19 +12,19 @@
                     <div class="card-body">
 
                     @if (Model.UserSessions != null)
-                    {
-                        <div class="row">
+                {
+                    <div class="row">
                             <div class="col-1 text-center">
                                 @if (Model.UserSessions.HasPrevResults)
-                                {
-                                    <a class="btn btn-primary" asp-page="/ServerSideSessions/Index"
+                            {
+                                <a class="btn btn-primary" asp-page="/ServerSideSessions/Index"
                                          asp-route-prev="true" 
                                          asp-route-token="@Model.UserSessions.ResultsToken"
                                          asp-route-DisplayNameFilter="@Model.DisplayNameFilter"
                                          asp-route-SubjectIdFilter="@Model.SubjectIdFilter"
                                          asp-route-SessionIdFilter="@Model.SessionIdFilter"
                                     >Prev</a>
-                                }
+                            }
                             </div>
                             <div class="col">
                                 <form class="form">
@@ -47,41 +47,40 @@
                             </div>
                             <div class="col-1 text-center">
                                 @if (Model.UserSessions.HasNextResults)
-                                {
-                                    <a class="btn btn-primary" asp-page="/ServerSideSessions/Index"
+                            {
+                                <a class="btn btn-primary" asp-page="/ServerSideSessions/Index"
                                          asp-route-token="@Model.UserSessions.ResultsToken"
                                          asp-route-DisplayNameFilter="@Model.DisplayNameFilter"
                                          asp-route-SubjectIdFilter="@Model.SubjectIdFilter"
                                          asp-route-SessionIdFilter="@Model.SessionIdFilter"
                                     >Next</a>
-                                }
+                            }
                             </div>
                         </div>
 
-                        @if (Model.UserSessions.TotalCount.HasValue)
-                        {
-                            <div class="text-center">
+                    @if (Model.UserSessions.TotalCount.HasValue)
+                    {
+                        <div class="text-center">
                                 @if (Model.UserSessions.CurrentPage.HasValue && Model.UserSessions.TotalPages.HasValue)
-                                {
-                                    <text>
+                            {
+                                <text>
                                         Total Results: @Model.UserSessions.TotalCount,
                                         Page @Model.UserSessions.CurrentPage of @Model.UserSessions.TotalPages
                                     </text>
-                                }
-                                else
-                                {
-                                    <text>
+                            }
+                            else
+                            {
+                                <text>
                                         Total Results: @Model.UserSessions.TotalCount
                                     </text>
-                                }
+                            }
                             </div>
-                        }
+                    }
 
-                        <br />
-                    
-                        @if (Model.UserSessions.Results.Any())
-                        {
-                            <div>
+                    <br />
+                    @if (Model.UserSessions.Results.Any())
+                    {
+                        <div>
                                 <table class="table table-bordered table-striped table-sm">
                                     <thead>
                                         <tr>
@@ -95,8 +94,8 @@
                                     </thead>
                                     <tbody>
                                         @foreach (var session in Model.UserSessions.Results)
-                                        {
-                                            <tr>
+                                    {
+                                        <tr>
                                                 <td>@session.SubjectId</td>
                                                 <td>@session.SessionId</td>
                                                 <td>@session.DisplayName</td>
@@ -109,37 +108,37 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <tr><td colspan="6">
+                                        <tr><td colspan="6">
                                                 <strong>Clients:</strong>
                                                 @if (session.ClientIds?.Any() == true)
-                                                {
-                                                    @(session.ClientIds.Aggregate((x, y) => $"{x}, {y}"))
-                                                }
-                                                else
-                                                {
-                                                    @("None")
-                                                }
+                                            {
+                                                @(session.ClientIds.Aggregate((x, y) => $"{x}, {y}"))
+                                            }
+                                            else
+                                            {
+                                                @("None")
+                                            }
                                             </td></tr>
-                                        }
+                                    }
                                     </tbody>
                                 </table>
                             </div>
-                        }
-                        else
-                        {
-                            <div class="text-center">No User Sessions</div>
-                        }
                     }
                     else
-                    { 
-                        <div class="row">
+                    {
+                        <div class="text-center">No User Sessions</div>
+                    }
+                }
+                else
+                { 
+                    <div class="row">
                             <div class="col">
                                 You do not have server-side sessions enabled.
                                 To do so, use <i>AddServerSideSessions</i> on your IdentityServer configuration.
                                 See the <a href="https://docs.duendesoftware.com/identityserver/v6/ui/server_side_sessions">documentation</a> for more information.
                             </div>
                         </div>
-                    }
+                }
                     </div>
                 </div>
             </div>

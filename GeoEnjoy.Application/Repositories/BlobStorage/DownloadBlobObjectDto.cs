@@ -1,8 +1,7 @@
-﻿namespace GeoEnjoy.Application.Repositories.BlobStorage
+﻿namespace GeoEnjoy.Application.Repositories.BlobStorage;
+
+public class DownloadBlobObjectDto
 {
-    public class DownloadBlobObjectDto
-    {
-        public string ObjectName { get; set; } = null!;
-        public string BucketName { get; set; } = null!;
-    }
+    public string ObjectName { get; set; } = null!;
+    public string BucketName { get; set; } = null!;
 }

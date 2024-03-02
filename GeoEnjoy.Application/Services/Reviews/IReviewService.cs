@@ -2,18 +2,17 @@
 using GeoEnjoy.Application.Contracts.Request;
 using GeoEnjoy.Application.Contracts.Response;
 
-namespace GeoEnjoy.Application.Services.Reviews
+namespace GeoEnjoy.Application.Services.Reviews;
+
+public interface IReviewService
 {
-    public interface IReviewService
-    {
-        Task<Result<ReviewResponse>> AddAsync(Guid pointId, AddReviewRequest request);
+    Task<Result<ReviewResponse>> AddAsync(Guid pointId, AddReviewRequest request);
 
-        Task<Result<List<ReviewResponse>>> GetAsync(Guid pointId, GetReviewsRequest request);
+    Task<Result<List<ReviewResponse>>> GetAsync(Guid pointId, GetReviewsRequest request);
 
-        Task<Result<ReviewResponse?>> GetOwnReviewAsync(Guid pointId);
+    Task<Result<ReviewResponse?>> GetOwnReviewAsync(Guid pointId);
 
-        Task<Result> LikeAsync(Guid id);
-        Task<Result> DislikeAsync(Guid id);
-        Task<Result> DeleteAsync(Guid id);
-    }
+    Task<Result> LikeAsync(Guid id);
+    Task<Result> DislikeAsync(Guid id);
+    Task<Result> DeleteAsync(Guid id);
 }

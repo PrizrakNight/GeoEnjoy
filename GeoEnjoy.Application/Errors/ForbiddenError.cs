@@ -1,12 +1,11 @@
 ﻿using FluentResults;
 
-namespace GeoEnjoy.Application.Errors
+namespace GeoEnjoy.Application.Errors;
+
+public class ForbiddenError : Error
 {
-    public class ForbiddenError : Error
+    public ForbiddenError(string? message = null)
     {
-        public ForbiddenError(string? message = null)
-        {
-            Message = message;
-        }
+        Message = message;
     }
 }

@@ -1,9 +1,8 @@
-﻿namespace GeoEnjoy.Application.Dto
-{
-    public class UserInfo
-    {
-        public string? AvatarUrl { get; set; }
+﻿namespace GeoEnjoy.Application.Dto;
 
-        public string UserName { get; set; } = null!;
-    }
+public class UserInfo
+{
+    public string? AvatarUrl { get; set; }
+
+    public string UserName { get; set; } = null!;
 }

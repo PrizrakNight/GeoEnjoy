@@ -1,34 +1,105 @@
-﻿using GeoEnjoy.Application.Contracts.Request;
+﻿using GeoEnjoy.Application.Contracts.Requests.PointsOfInterest;
 using GeoEnjoy.Application.Contracts.Response;
 using GeoEnjoy.Application.Dto;
 using GeoEnjoy.Application.Services.PointsOfInterest;
 using GeoEnjoy.WebApi.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GeoEnjoy.WebApi.Controllers
+namespace GeoEnjoy.WebApi.Controllers;
+
+[Route("api/points-of-interest")]
+[ApiController]
+[Authorize]
+[AutoValidateAntiforgeryToken]
+public class PointsOfInterestController(
+    IReadOnlyPointService readOnlyPoints,
+    IWriteOnlyPointService writeOnlyPoints,
+    IPointSocialActivitiesService pointSocialActivities) : ControllerBase
 {
-    [Route("api/points-of-interest")]
-    [ApiController]
-    [AutoValidateAntiforgeryToken]
-    public class PointsOfInterestController(
-        IReadOnlyPointService readOnlyPoints) : ControllerBase
+    #region SocialActivities
+
+    [HttpDelete("{pointId}/social-activities")]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> RemoveSocialActivities(Guid pointId)
     {
-        [HttpPost("in-radius")]
-        [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-        public async Task<IActionResult> GetInRadiusAsync([FromBody] RadiusDto request)
-        {
-            var result = await readOnlyPoints.GetInRadiusAsync(request);
+        var result = await pointSocialActivities.RemoveSocialActivitiesAsync(pointId);
 
-            return result.ToActionResult();
-        }
-
-        [HttpPost("own")]
-        [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-        public async Task<IActionResult> GetInRadiusAsync([FromBody] GetOwnPointsOfInterestRequest request)
-        {
-            var result = await readOnlyPoints.GetOwnAsync(request);
-
-            return result.ToActionResult();
-        }
+        return result.ToActionResult();
     }
+
+    [HttpPost("{pointId}/social-activities/like")]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> Like(Guid pointId)
+    {
+        var result = await pointSocialActivities.LikeAsync(pointId);
+
+        return result.ToActionResult();
+    }
+
+    [HttpPost("{pointId}/social-activities/dislike")]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> Dislike(Guid pointId)
+    {
+        var result = await pointSocialActivities.DislikeAsync(pointId);
+
+        return result.ToActionResult();
+    }
+
+    #endregion
+
+    [HttpPost("{pointId}/set-public")]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> SetPublic(Guid pointId,
+        [FromBody] SetPublicRequest request)
+    {
+        var result = await writeOnlyPoints.SetPublicAsync
+        (
+            id: pointId,
+            isPublic: request.IsPublic
+        );
+
+        return result.ToActionResult();
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> Add(
+        [FromBody] CreatePointOfInterestRequest request)
+    {
+        var result = await writeOnlyPoints.AddAsync(request);
+
+        return result.ToActionResult();
+    }
+
+    [HttpDelete("{pointId}")]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> Delete(Guid pointId)
+    {
+        var result = await writeOnlyPoints.DeleteAsync(pointId);
+
+        return result.ToActionResult();
+    }
+
+    #region ReadOnly
+
+    [HttpPost("in-radius")]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> GetInRadiusAsync([FromBody] RadiusDto request)
+    {
+        var result = await readOnlyPoints.GetInRadiusAsync(request);
+
+        return result.ToActionResult();
+    }
+
+    [HttpPost("own")]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    public async Task<IActionResult> GetInRadiusAsync([FromBody] GetOwnPointsOfInterestRequest request)
+    {
+        var result = await readOnlyPoints.GetOwnAsync(request);
+
+        return result.ToActionResult();
+    }
+
+    #endregion
 }

@@ -1,12 +1,11 @@
 ﻿using GeoEnjoy.Domain;
 
-namespace GeoEnjoy.Application.Repositories
-{
-    public interface IFavoritePointOfInterestRepository
-        : ISpecRepository<FavoritePointOfInterest>
-    {
-        void Add(FavoritePointOfInterest pointOfInterest);
+namespace GeoEnjoy.Application.Repositories;
 
-        void DeleteBy(Guid userId, Guid pointId);
-    }
+public interface IFavoritePointOfInterestRepository
+    : ISpecRepository<FavoritePointOfInterest>
+{
+    void Add(FavoritePointOfInterest pointOfInterest);
+
+    void DeleteBy(Guid userId, Guid pointId);
 }

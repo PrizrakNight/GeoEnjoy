@@ -1,11 +1,10 @@
 ﻿using GeoEnjoy.Application.Dto;
 
-namespace GeoEnjoy.Application.Services
-{
-    public interface ICurrentUserProvider
-    {
-        Guid Id { get; }
+namespace GeoEnjoy.Application.Services;
 
-        UserInfo Info { get; }
-    }
+public interface ICurrentUserProvider
+{
+    Guid Id { get; }
+
+    UserInfo Info { get; }
 }

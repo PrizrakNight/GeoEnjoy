@@ -1,7 +1,6 @@
-﻿namespace GeoEnjoy.Application.Services
+﻿namespace GeoEnjoy.Application.Services;
+
+public interface ICancellationTokenProvider
 {
-    public interface ICancellationTokenProvider
-    {
-        CancellationToken CancellationToken { get; }
-    }
+    CancellationToken CancellationToken { get; }
 }

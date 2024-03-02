@@ -1,11 +1,10 @@
-﻿namespace GeoEnjoy.Application.Contracts.Response
+﻿namespace GeoEnjoy.Application.Contracts.Response;
+
+public class GeoUserResponse
 {
-    public class GeoUserResponse
-    {
-        public Guid Id { get; set; }
+    public Guid Id { get; set; }
 
-        public string? AvatarUrl { get; set; }
+    public string? AvatarUrl { get; set; }
 
-        public string UserName { get; set; } = null!;
-    }
+    public string UserName { get; set; } = null!;
 }

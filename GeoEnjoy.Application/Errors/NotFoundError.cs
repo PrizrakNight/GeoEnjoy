@@ -1,12 +1,11 @@
 ﻿using FluentResults;
 
-namespace GeoEnjoy.Application.Errors
+namespace GeoEnjoy.Application.Errors;
+
+public class NotFoundError : Error
 {
-    public class NotFoundError : Error
+    public NotFoundError(string? message = null)
     {
-        public NotFoundError(string? message = null)
-        {
-            Message = message;
-        }
+        Message = message;
     }
 }

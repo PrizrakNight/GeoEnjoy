@@ -1,11 +1,10 @@
 ﻿using GeoEnjoy.Application.Dto;
 using GeoEnjoy.Domain;
 
-namespace GeoEnjoy.Application.Repositories
+namespace GeoEnjoy.Application.Repositories;
+
+public interface IReviewRepository : IRepository<Review>
 {
-    public interface IReviewRepository : IRepository<Review>
-    {
-        ValueTask<PointOfInterestReviewsDto> GetForPointAsync(Guid pointId, Guid? authorId,
-            CancellationToken cancellationToken = default);
-    }
+    ValueTask<PointOfInterestReviewsDto> GetForPointAsync(Guid pointId, Guid? authorId,
+        CancellationToken cancellationToken = default);
 }

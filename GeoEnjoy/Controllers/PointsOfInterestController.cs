@@ -52,7 +52,7 @@ public class PointsOfInterestController(
 
     [HttpPost("in-radius")]
     [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-    public async Task<IActionResult> GetInRadiusAsync([FromBody] RadiusDto request)
+    public async Task<IActionResult> GetInRadius([FromBody] RadiusDto request)
     {
         var result = await readOnlyPoints.GetInRadiusAsync(request);
 
@@ -61,7 +61,7 @@ public class PointsOfInterestController(
 
     [HttpPost("own")]
     [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-    public async Task<IActionResult> GetInRadiusAsync([FromBody] GetOwnPointsOfInterestRequest request)
+    public async Task<IActionResult> GetOwn([FromBody] GetOwnPointsOfInterestRequest request)
     {
         var result = await readOnlyPoints.GetOwnAsync(request);
 

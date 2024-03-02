@@ -44,34 +44,7 @@ namespace GeoEnjoy.Application.Services.SocialActivities
             return await SetActivityAsync(id, SocialActivityType.Like);
         }
 
-        protected abstract SocialEntityType GetSocialEntityType();
-
-        protected virtual Task<Result> ExistsAsync(Guid id)
-        {
-            return Task.FromResult(Result.Ok());
-        }
-
-        public async Task<Result> RemoveSocialActivitiesAsync(Guid id)
-        {
-            var condition = SocialSpec.ByEntityId(id) & SocialSpec.ByUserId(CurrentUser.Id);
-
-            var activity = await Repository.UserSocialActivities.FindOneBySpecAsync
-            (
-                spec: condition,
-                cancellationToken: TokenProvider.CancellationToken
-            );
-
-            if (activity != null)
-            {
-                Repository.UserSocialActivities.Delete(activity);
-
-                await Repository.SaveChangesAsync(TokenProvider.CancellationToken);
-            }
-
-            return Result.Ok();
-        }
-
-        protected async Task<Result> SetActivityAsync(Guid id, SocialActivityType activityType)
+        private async Task<Result> SetActivityAsync(Guid id, SocialActivityType activityType)
         {
             var currentUserId = CurrentUser.Id;
 
@@ -109,6 +82,33 @@ namespace GeoEnjoy.Application.Services.SocialActivities
             Repository.UserSocialActivities.Update(activity);
 
             await Repository.SaveChangesAsync(TokenProvider.CancellationToken);
+
+            return Result.Ok();
+        }
+
+        protected abstract SocialEntityType GetSocialEntityType();
+
+        protected virtual Task<Result> ExistsAsync(Guid id)
+        {
+            return Task.FromResult(Result.Ok());
+        }
+
+        public async Task<Result> RemoveSocialActivitiesAsync(Guid id)
+        {
+            var condition = SocialSpec.ByEntityId(id) & SocialSpec.ByUserId(CurrentUser.Id);
+
+            var activity = await Repository.UserSocialActivities.FindOneBySpecAsync
+            (
+                spec: condition,
+                cancellationToken: TokenProvider.CancellationToken
+            );
+
+            if (activity != null)
+            {
+                Repository.UserSocialActivities.Delete(activity);
+
+                await Repository.SaveChangesAsync(TokenProvider.CancellationToken);
+            }
 
             return Result.Ok();
         }

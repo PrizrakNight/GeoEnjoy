@@ -41,7 +41,6 @@ public class PointsOfInterestController(
     }
 
     [HttpDelete("{pointId}")]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
     public async Task<IActionResult> Delete(Guid pointId)
     {
         var result = await writeOnlyPoints.DeleteAsync(pointId);

@@ -3,7 +3,7 @@ using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Domain;
 using SocialSpec = GeoEnjoy.Application.Specifications.UserSocialActivitySpecifications;
 
-namespace GeoEnjoy.Application.Services
+namespace GeoEnjoy.Application.Services.SocialActivities
 {
     public abstract class SocialActivitiesBaseService : ISocialActivitiesService
     {

@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 
-namespace GeoEnjoy.Application.Services
+namespace GeoEnjoy.Application.Services.SocialActivities
 {
     public interface ISocialActivitiesService
     {

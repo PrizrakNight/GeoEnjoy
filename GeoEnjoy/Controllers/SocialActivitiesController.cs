@@ -1,5 +1,5 @@
-﻿using GeoEnjoy.Application.Contracts.Response;
-using GeoEnjoy.Application.Services;
+﻿using GeoEnjoy.Application.Contracts.Requests;
+using GeoEnjoy.Application.Services.SocialActivities;
 using GeoEnjoy.WebApi.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,31 +10,34 @@ namespace GeoEnjoy.WebApi.Controllers
     [Authorize]
     [ApiController]
     public class SocialActivitiesController(
-        ISocialActivitiesService pointSocialActivities) : ControllerBase
+        ISocialActivitiesServiceFactory factory) : ControllerBase
     {
-        [HttpDelete("points/{pointId}")]
-        [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-        public async Task<IActionResult> RemoveSocialActivities(Guid pointId)
+        [HttpDelete]
+        public async Task<IActionResult> RemoveSocialActivities([FromBody] SocialActivityRequest request)
         {
-            var result = await pointSocialActivities.RemoveSocialActivitiesAsync(pointId);
+            var service = factory.Create(request.EntityType);
+
+            var result = await service.RemoveSocialActivitiesAsync(request.EntityId);
 
             return result.ToActionResult();
         }
 
-        [HttpPost("points/{pointId}/like")]
-        [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-        public async Task<IActionResult> Like(Guid pointId)
+        [HttpPost("like")]
+        public async Task<IActionResult> Like([FromBody] SocialActivityRequest request)
         {
-            var result = await pointSocialActivities.LikeAsync(pointId);
+            var service = factory.Create(request.EntityType);
+
+            var result = await service.LikeAsync(request.EntityId);
 
             return result.ToActionResult();
         }
 
-        [HttpPost("points/{pointId}/dislike")]
-        [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
-        public async Task<IActionResult> Dislike(Guid pointId)
+        [HttpPost("dislike")]
+        public async Task<IActionResult> Dislike([FromBody] SocialActivityRequest request)
         {
-            var result = await pointSocialActivities.DislikeAsync(pointId);
+            var service = factory.Create(request.EntityType);
+
+            var result = await service.DislikeAsync(request.EntityId);
 
             return result.ToActionResult();
         }

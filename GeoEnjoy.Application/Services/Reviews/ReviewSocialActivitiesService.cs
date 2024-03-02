@@ -1,6 +1,7 @@
 ﻿using FluentResults;
 using GeoEnjoy.Application.Errors;
 using GeoEnjoy.Application.Repositories;
+using GeoEnjoy.Application.Services.SocialActivities;
 using GeoEnjoy.Domain;
 
 namespace GeoEnjoy.Application.Services.Reviews

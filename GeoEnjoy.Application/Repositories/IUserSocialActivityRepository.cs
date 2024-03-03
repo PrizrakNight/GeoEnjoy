@@ -1,5 +1,5 @@
 ﻿using GeoEnjoy.Application.Dto;
-using GeoEnjoy.Domain;
+using GeoEnjoy.Domain.Entities;
 
 namespace GeoEnjoy.Application.Repositories;
 

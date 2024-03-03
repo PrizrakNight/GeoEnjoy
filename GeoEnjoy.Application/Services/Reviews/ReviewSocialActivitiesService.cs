@@ -2,7 +2,7 @@
 using GeoEnjoy.Application.Errors;
 using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Application.Services.SocialActivities;
-using GeoEnjoy.Domain;
+using GeoEnjoy.Domain.Entities;
 
 namespace GeoEnjoy.Application.Services.Reviews
 {

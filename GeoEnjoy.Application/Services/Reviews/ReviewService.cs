@@ -5,7 +5,7 @@ using GeoEnjoy.Application.Errors;
 using GeoEnjoy.Application.Exceptions;
 using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Application.Sortings;
-using GeoEnjoy.Domain;
+using GeoEnjoy.Domain.Entities;
 using ReviewSpec = GeoEnjoy.Application.Specifications.ReviewSpecifications;
 
 namespace GeoEnjoy.Application.Services.Reviews;
@@ -35,15 +35,15 @@ public class ReviewService(
 
         var condition = ReviewSpec.ByReviewer(currrentUserId) & ReviewSpec.ByPointOfInterest(pointId);
 
-        var existingReview = await repository.Reviews.FindAllBySpecAsync
+        var existingReview = await repository.Reviews.FindOneBySpecAsync
         (
             spec: condition,
             cancellationToken: cancellationToken
         );
 
-        if (existingReview.Count != 0)
+        if (existingReview != null)
         {
-            repository.Reviews.Delete(existingReview.First());
+            repository.Reviews.Delete(existingReview);
         }
 
         var review = mapping.Map<Review>(request);

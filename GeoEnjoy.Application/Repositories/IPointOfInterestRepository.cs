@@ -1,5 +1,5 @@
 ﻿using GeoEnjoy.Application.Dto;
-using GeoEnjoy.Domain;
+using GeoEnjoy.Domain.Entities;
 using NSpecifications;
 
 namespace GeoEnjoy.Application.Repositories;

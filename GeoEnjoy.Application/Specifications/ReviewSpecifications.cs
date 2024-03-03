@@ -1,4 +1,4 @@
-﻿using GeoEnjoy.Domain;
+﻿using GeoEnjoy.Domain.Entities;
 using NSpecifications;
 
 namespace GeoEnjoy.Application.Specifications;

@@ -1,4 +1,4 @@
-﻿namespace GeoEnjoy.Domain;
+﻿namespace GeoEnjoy.Domain.Entities;
 
 public class Review : IDomainEntity
 {

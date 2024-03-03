@@ -17,7 +17,7 @@ public class PointsOfInterestController(
     IWriteOnlyPointService writeOnlyPoints) : ControllerBase
 {
     [HttpPost("{pointId}/set-public")]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> SetPublic(Guid pointId,
         [FromBody] SetPublicRequest request)
     {
@@ -31,7 +31,7 @@ public class PointsOfInterestController(
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> Add(
         [FromBody] CreatePointOfInterestRequest request)
     {
@@ -41,6 +41,7 @@ public class PointsOfInterestController(
     }
 
     [HttpDelete("{pointId}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> Delete(Guid pointId)
     {
         var result = await writeOnlyPoints.DeleteAsync(pointId);
@@ -51,7 +52,7 @@ public class PointsOfInterestController(
     #region ReadOnly
 
     [HttpPost("in-radius")]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetInRadius([FromBody] RadiusDto request)
     {
         var result = await readOnlyPoints.GetInRadiusAsync(request);
@@ -60,7 +61,7 @@ public class PointsOfInterestController(
     }
 
     [HttpPost("own")]
-    [ProducesResponseType(typeof(List<PointOfInterestResponse>), 200)]
+    [ProducesResponseType(typeof(List<PointOfInterestResponse>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetOwn([FromBody] GetOwnPointsOfInterestRequest request)
     {
         var result = await readOnlyPoints.GetOwnAsync(request);

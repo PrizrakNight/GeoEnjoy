@@ -5,7 +5,6 @@ using GeoEnjoy.Application.Errors;
 using GeoEnjoy.Application.Exceptions;
 using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Application.Sortings;
-using GeoEnjoy.Domain;
 using Spec = GeoEnjoy.Application.Specifications.FavoritePointOfInterestSpecifications;
 
 namespace GeoEnjoy.Application.Services.PointsOfInterest;

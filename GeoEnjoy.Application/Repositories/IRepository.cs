@@ -1,4 +1,4 @@
-﻿using GeoEnjoy.Domain;
+﻿using GeoEnjoy.Domain.Entities;
 
 namespace GeoEnjoy.Application.Repositories;
 

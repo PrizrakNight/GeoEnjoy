@@ -1,6 +1,6 @@
 ﻿using FluentResults;
 using GeoEnjoy.Application.Repositories;
-using GeoEnjoy.Domain;
+using GeoEnjoy.Domain.Entities;
 using SocialSpec = GeoEnjoy.Application.Specifications.UserSocialActivitySpecifications;
 
 namespace GeoEnjoy.Application.Services.SocialActivities

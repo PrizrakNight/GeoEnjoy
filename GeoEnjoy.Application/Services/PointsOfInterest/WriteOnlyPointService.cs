@@ -3,7 +3,7 @@ using GeoEnjoy.Application.Contracts.Requests.PointsOfInterest;
 using GeoEnjoy.Application.Contracts.Response;
 using GeoEnjoy.Application.Errors;
 using GeoEnjoy.Application.Repositories;
-using GeoEnjoy.Domain;
+using GeoEnjoy.Domain.Entities;
 using PointSpec = GeoEnjoy.Application.Specifications.PointOfInterestSpecifications;
 
 namespace GeoEnjoy.Application.Services.PointsOfInterest;

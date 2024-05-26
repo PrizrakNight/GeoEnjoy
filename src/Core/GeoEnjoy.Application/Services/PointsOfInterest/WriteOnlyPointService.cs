@@ -41,7 +41,7 @@ public class WriteOnlyPointService(
 
         if (foundPoint == null)
         {
-            return Result.Fail(GeoEnjoyErrors.PointOfInterestNotFound());
+            return Result.Fail(GeoEnjoyErrors.EntityNotFound<PointOfInterest>());
         }
 
         repository.PointsOfInterest.Delete(foundPoint);
@@ -63,7 +63,7 @@ public class WriteOnlyPointService(
 
         if (foundPoint == null)
         {
-            return Result.Fail(GeoEnjoyErrors.PointOfInterestNotFound());
+            return Result.Fail(GeoEnjoyErrors.EntityNotFound<PointOfInterest>());
         }
 
         foundPoint.IsPublic = isPublic;

@@ -29,7 +29,7 @@ public class ReviewService(
 
         if (!pointExists)
         {
-            return Result.Fail<ReviewResponse>(GeoEnjoyErrors.PointOfInterestNotFound());
+            return Result.Fail<ReviewResponse>(GeoEnjoyErrors.EntityNotFound<PointOfInterest>());
         }
 
         var currrentUserId = currentUser.Id;
@@ -75,7 +75,7 @@ public class ReviewService(
 
         if (foundReview == null)
         {
-            return Result.Fail(GeoEnjoyErrors.ReviewNotFound());
+            return Result.Fail(GeoEnjoyErrors.EntityNotFound<Review>());
         }
 
         repository.Reviews.Delete(foundReview);
@@ -91,7 +91,7 @@ public class ReviewService(
 
         if (pointNotExists)
         {
-            return Result.Fail(GeoEnjoyErrors.PointOfInterestNotFound());
+            return Result.Fail(GeoEnjoyErrors.EntityNotFound<PointOfInterest>());
         }
 
         var condition = ReviewSpec.ByPointOfInterest(pointId);

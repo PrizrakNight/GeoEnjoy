@@ -9,16 +9,6 @@ public static class GeoEnjoyErrors
         return new NotFoundError($"{typeof(T).Name}NotFound");
     }
 
-    public static IError PointOfInterestNotFound()
-    {
-        return new NotFoundError(nameof(PointOfInterestNotFound));
-    }
-
-    public static IError ReviewNotFound()
-    {
-        return new NotFoundError(nameof(ReviewNotFound));
-    }
-
     public static IError FavoriteAlredyExists()
     {
         return new BadOperationError(nameof(FavoriteAlredyExists));

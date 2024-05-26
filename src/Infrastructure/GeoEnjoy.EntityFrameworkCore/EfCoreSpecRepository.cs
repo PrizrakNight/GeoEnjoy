@@ -15,8 +15,7 @@ namespace GeoEnjoy.EntityFrameworkCore
         public ValueTask<bool> ExistsBySpecAsync(ASpec<T> spec,
             CancellationToken cancellationToken = default)
         {
-            var existsTask = DbSet
-                .AnyAsync(spec.Expression, cancellationToken);
+            var existsTask = DbSet.AnyAsync(spec, cancellationToken);
 
             return new ValueTask<bool>(existsTask);
         }
@@ -25,9 +24,9 @@ namespace GeoEnjoy.EntityFrameworkCore
             PaginationDto? pagination = null,
             CancellationToken cancellationToken = default)
         {
-            var query = ApplySortings(ExpandEntity(DbSet));
+            var query = ApplySortings(ExpandEntity(DbSet.AsNoTracking()));
 
-            query = ApplyPagination(query.Where(spec.Expression), pagination);
+            query = ApplyPagination(query.Where(spec), pagination);
 
             return new ValueTask<List<T>>(query.ToListAsync(cancellationToken));
         }
@@ -35,8 +34,7 @@ namespace GeoEnjoy.EntityFrameworkCore
         public ValueTask<T?> FindOneBySpecAsync(ASpec<T> spec,
             CancellationToken cancellationToken = default)
         {
-            var findTask = DbSet
-                .FirstOrDefaultAsync(spec.Expression, cancellationToken);
+            var findTask = DbSet.FirstOrDefaultAsync(spec, cancellationToken);
 
             return new ValueTask<T?>(findTask);
         }

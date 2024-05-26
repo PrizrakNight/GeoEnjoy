@@ -1,8 +1,15 @@
-﻿namespace GeoEnjoy.Domain.Entities;
+﻿using GeoEnjoy.Domain.Entities.PointOfInterests;
+
+namespace GeoEnjoy.Domain.Entities;
 
 public class Review : ISocialActivityEntity
 {
     public Guid Id { get; set; }
+
+    /// <summary>
+    /// ID of the user who created the review
+    /// </summary>
+    public Guid ReviewerId { get; set; }
 
     public string? Comment { get; set; }
 
@@ -12,6 +19,8 @@ public class Review : ISocialActivityEntity
     public short Rating { get; set; }
 
     public DateTime Created { get; set; }
+
+    public virtual PointOfInterest? PointOfInterest { get; set; }
 
     public virtual ICollection<SocialActivity>? SocialActivities { get; set; }
 }

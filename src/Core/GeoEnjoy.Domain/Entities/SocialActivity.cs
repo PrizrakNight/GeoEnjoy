@@ -1,4 +1,6 @@
-﻿namespace GeoEnjoy.Domain.Entities;
+﻿using GeoEnjoy.Domain.Entities.PointOfInterests;
+
+namespace GeoEnjoy.Domain.Entities;
 
 public enum SocialActivityType
 {
@@ -18,4 +20,7 @@ public class SocialActivity
     public DateTime Created { get; set; }
 
     public DateTime? Updated { get; set; }
+
+    public virtual Review? Review { get; set; }
+    public virtual PointOfInterest? PointOfInterest { get; set; }
 }

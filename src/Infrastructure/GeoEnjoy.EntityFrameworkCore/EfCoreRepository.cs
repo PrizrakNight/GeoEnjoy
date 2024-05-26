@@ -47,7 +47,7 @@ namespace GeoEnjoy.EntityFrameworkCore
         public ValueTask<List<T>> FindByIdsAsync(IEnumerable<Guid> ids,
             CancellationToken cancellationToken = default)
         {
-            var findTask = ApplySortings(ExpandEntity(DbSet))
+            var findTask = ApplySortings(ExpandEntity(DbSet.AsNoTracking()))
                 .ToListAsync(cancellationToken);
 
             return new ValueTask<List<T>>(findTask);

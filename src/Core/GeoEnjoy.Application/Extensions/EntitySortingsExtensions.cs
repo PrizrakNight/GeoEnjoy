@@ -3,33 +3,14 @@ using GeoEnjoy.Application.Contracts.Requests.PointsOfInterest;
 using GeoEnjoy.Application.Exceptions;
 using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Domain.Entities;
-using GeoEnjoy.Domain.Entities.PointOfInterests;
 
 namespace GeoEnjoy.Application.Extensions
 {
     public static class EntitySortingsExtensions
     {
-        public static void UseSortingWay(this IEntitySortings<PointOfInterest> entitySortings,
+        public static void UseSortingWay<T>(this IEntitySortings<T> entitySortings,
             PointsOfInterestSorting sortingWay)
-        {
-            switch (sortingWay)
-            {
-                case PointsOfInterestSorting.None:
-                    // We do not use sorting
-                    break;
-                case PointsOfInterestSorting.Newer:
-                    entitySortings.OrderByDescending(x => x.Created);
-                    break;
-                case PointsOfInterestSorting.Older:
-                    entitySortings.OrderBy(x => x.Created);
-                    break;
-                default:
-                    throw new SortingNotImplementedException(sortingWay.ToString());
-            }
-        }
-
-        public static void UseSortingWay(this IEntitySortings<FavoritePointOfInterest> entitySortings,
-            PointsOfInterestSorting sortingWay)
+            where T : ICreatable
         {
             switch (sortingWay)
             {

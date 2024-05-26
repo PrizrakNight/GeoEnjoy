@@ -2,7 +2,7 @@
 
 namespace GeoEnjoy.Domain.Entities;
 
-public class Review : ISocialActivityEntity
+public class Review : ISocialActivityEntity, ICreatable
 {
     public Guid Id { get; set; }
 

@@ -8,7 +8,7 @@ public enum SocialActivityType
     Dislike
 }
 
-public class SocialActivity
+public class SocialActivity : ICreatable, IModifiable
 {
     /// <summary>
     /// The ID of the user who likes

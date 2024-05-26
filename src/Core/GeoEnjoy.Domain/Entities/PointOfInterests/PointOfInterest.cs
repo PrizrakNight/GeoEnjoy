@@ -1,6 +1,8 @@
 ﻿namespace GeoEnjoy.Domain.Entities.PointOfInterests;
 
-public class PointOfInterest : ISocialActivityEntity
+public class PointOfInterest : ISocialActivityEntity,
+    ICreatable,
+    IModifiable
 {
     public Guid Id { get; set; }
     public Guid AuthorId { get; set; }

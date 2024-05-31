@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEnjoy.Application.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEnjoy.WebApi", "GeoEnjoy.WebApi\GeoEnjoy.WebApi.csproj", "{E51EE93E-32A1-4695-8E58-642BF4289F10}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEnjoy.Globalization", "Core\GeoEnjoy.Globalization\GeoEnjoy.Globalization.csproj", "{56A8C261-90DB-4DC3-B90D-48E2BD7F1E70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{E51EE93E-32A1-4695-8E58-642BF4289F10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E51EE93E-32A1-4695-8E58-642BF4289F10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E51EE93E-32A1-4695-8E58-642BF4289F10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A8C261-90DB-4DC3-B90D-48E2BD7F1E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A8C261-90DB-4DC3-B90D-48E2BD7F1E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A8C261-90DB-4DC3-B90D-48E2BD7F1E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A8C261-90DB-4DC3-B90D-48E2BD7F1E70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{1581BB27-4BAA-41D5-8E0B-5F78FF751F07} = {DCBE1805-A2C8-4C19-A2F2-FACFD412A37A}
 		{24E1D60B-B70B-4AD6-8395-E062F05C4839} = {DCBE1805-A2C8-4C19-A2F2-FACFD412A37A}
 		{B90BA46F-E24A-410F-86DE-6A2FD4565545} = {072DE8E0-B860-440F-9270-8313180B6F7D}
+		{56A8C261-90DB-4DC3-B90D-48E2BD7F1E70} = {3AF53BEA-A7F1-41D0-BBDC-76CFB52564B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49A28C7E-6230-4ED0-A6FB-32D1388A3BD7}

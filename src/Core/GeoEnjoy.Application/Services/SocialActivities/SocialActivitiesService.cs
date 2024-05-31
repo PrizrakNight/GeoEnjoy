@@ -1,24 +1,29 @@
 ﻿using FluentResults;
 using GeoEnjoy.Application.Errors;
+using GeoEnjoy.Application.Logging;
 using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Domain.Entities;
+using GeoEnjoy.Globalization.Properties;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace GeoEnjoy.Application.Services.SocialActivities;
 
 public class SocialActivitiesService<T>(IGeoEnjoyRepository repository,
     ICancellationTokenProvider tokenProvider,
     ICurrentUserProvider currentUser,
-    IEntityExpands<T> entityExpands) : ISocialActivitiesService
+    IEntityExpands<T> entityExpands,
+    ILogger<SocialActivitiesService<T>> logger) : ISocialActivitiesService
     where T : ISocialActivityEntity
 {
     public Task<Result> DislikeAsync(Guid id)
     {
-        return SetOrCreateActivityAsync(id, SocialActivityType.Dislike);
+        return SetActivityAsync(id, SocialActivityType.Dislike);
     }
 
     public Task<Result> LikeAsync(Guid id)
     {
-        return SetOrCreateActivityAsync(id, SocialActivityType.Like);
+        return SetActivityAsync(id, SocialActivityType.Like);
     }
 
     public async Task<Result> RemoveSocialActivityAsync(Guid id)
@@ -43,12 +48,24 @@ public class SocialActivitiesService<T>(IGeoEnjoyRepository repository,
             foundEntity.SocialActivities!.Remove(foundActivity);
 
             await repository.SaveChangesAsync(tokenProvider.CancellationToken);
+
+            logger.LogInformation
+            (
+                eventId: LoggingEvents.SocialActivityDeleted,
+                message: LoggingTranslations.SocialActivityDeletedByUser,
+                args:
+                [
+                    foundActivity.ActivityType.ToString(),
+                    foundActivity.UserId,
+                    foundEntity.Id
+                ]
+            );
         }
 
         return Result.Ok();
     }
 
-    private async Task<Result> SetOrCreateActivityAsync(Guid id,
+    private async Task<Result> SetActivityAsync(Guid id,
         SocialActivityType activityType)
     {
         var entitySet = repository.Set<T>();
@@ -83,6 +100,18 @@ public class SocialActivitiesService<T>(IGeoEnjoyRepository repository,
         entitySet.Update(foundEntity);
 
         await repository.SaveChangesAsync(tokenProvider.CancellationToken);
+
+        logger.LogInformation
+        (
+            eventId: LoggingEvents.SocialActivitySet,
+            message: LoggingTranslations.SocialActivitySetByUser,
+            args:
+            [
+                foundActivity.ActivityType.ToString(),
+                foundActivity.UserId,
+                foundEntity.Id
+            ]
+        );
 
         return Result.Ok();
     }

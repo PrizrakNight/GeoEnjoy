@@ -9,4 +9,16 @@ public static class LoggingEvents
         id: 1000,
         name: nameof(BlobObjectNotFound)
     );
+
+    public static EventId SocialActivitySet => new
+    (
+        id: 5000,
+        name: nameof(SocialActivitySet)
+    );
+
+    public static EventId SocialActivityDeleted => new
+    (
+        id: 5001,
+        name: nameof(SocialActivityDeleted)
+    );
 }

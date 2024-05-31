@@ -8,11 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="FluentResults" Version="3.15.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
     <PackageReference Include="NSpecifications" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GeoEnjoy.Domain\GeoEnjoy.Domain.csproj" />
+    <ProjectReference Include="..\GeoEnjoy.Globalization\GeoEnjoy.Globalization.csproj" />
   </ItemGroup>
 
 </Project>

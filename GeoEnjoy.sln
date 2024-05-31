@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEnjoy.Application.Tests"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEnjoy.WebApi", "src\GeoEnjoy.WebApi\GeoEnjoy.WebApi.csproj", "{20B55CE5-D64C-4E3F-985E-9E6BCBB9500A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoEnjoy.EntityFrameworkCore", "src\Infrastructure\GeoEnjoy.EntityFrameworkCore\GeoEnjoy.EntityFrameworkCore.csproj", "{585951BE-8094-4512-B0DE-94B8F35C6B43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeoEnjoy.EntityFrameworkCore", "src\Infrastructure\GeoEnjoy.EntityFrameworkCore\GeoEnjoy.EntityFrameworkCore.csproj", "{585951BE-8094-4512-B0DE-94B8F35C6B43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoEnjoy.Globalization", "GeoEnjoy.Globalization\GeoEnjoy.Globalization.csproj", "{8DCA3CD1-5771-4CFC-863E-1347407A70E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{585951BE-8094-4512-B0DE-94B8F35C6B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{585951BE-8094-4512-B0DE-94B8F35C6B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{585951BE-8094-4512-B0DE-94B8F35C6B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DCA3CD1-5771-4CFC-863E-1347407A70E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DCA3CD1-5771-4CFC-863E-1347407A70E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DCA3CD1-5771-4CFC-863E-1347407A70E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DCA3CD1-5771-4CFC-863E-1347407A70E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,6 +74,7 @@ Global
 		{6293E1F2-33D5-45ED-ACF0-A47560D32DDB} = {DCBE1805-A2C8-4C19-A2F2-FACFD412A37A}
 		{9CD58A13-B24A-4D1D-8841-AFA314E2A6DD} = {072DE8E0-B860-440F-9270-8313180B6F7D}
 		{585951BE-8094-4512-B0DE-94B8F35C6B43} = {DCBE1805-A2C8-4C19-A2F2-FACFD412A37A}
+		{8DCA3CD1-5771-4CFC-863E-1347407A70E2} = {3AF53BEA-A7F1-41D0-BBDC-76CFB52564B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49A28C7E-6230-4ED0-A6FB-32D1388A3BD7}

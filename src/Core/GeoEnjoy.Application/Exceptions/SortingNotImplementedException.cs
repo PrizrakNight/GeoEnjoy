@@ -1,10 +1,5 @@
 ﻿namespace GeoEnjoy.Application.Exceptions;
 
-public class SortingNotImplementedException : NotImplementedException
+public class SortingNotImplementedException(string sortingName) : NotImplementedException($"Sorting '{sortingName}' not implemented")
 {
-    public SortingNotImplementedException(string sortingName)
-        : base($"Sorting '{sortingName}' not implemented")
-    {
-
-    }
 }

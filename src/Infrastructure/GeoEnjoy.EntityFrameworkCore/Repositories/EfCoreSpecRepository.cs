@@ -3,7 +3,7 @@ using GeoEnjoy.Application.Repositories;
 using Microsoft.EntityFrameworkCore;
 using NSpecifications;
 
-namespace GeoEnjoy.EntityFrameworkCore;
+namespace GeoEnjoy.EntityFrameworkCore.Repositories;
 
 public class EfCoreSpecRepository<T>(DbContext context,
     IEntityExpands<T> expands,

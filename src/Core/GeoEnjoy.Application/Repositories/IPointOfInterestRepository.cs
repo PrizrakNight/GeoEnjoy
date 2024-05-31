@@ -10,6 +10,6 @@ public interface IPointOfInterestRepository : IRepository<PointOfInterest>
         ASpec<PointOfInterest>? spec = null,
         CancellationToken cancellationToken = default);
 
-    ValueTask<List<PointOfInterestAssessment>> GetPointOfInterestsAssessmentsAsync(IEnumerable<Guid> ids,
+    ValueTask<List<PointOfInterestAssessment>> GetPointOfInterestsAssessmentsAsync(IEnumerable<Guid> pointIds,
         CancellationToken cancellationToken = default);
 }

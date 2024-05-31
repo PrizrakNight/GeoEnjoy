@@ -9,13 +9,13 @@ public class PostGISPointOfInterest : PointOfInterest
 
     public override double Longitude
     {
-        get => PointOnMap.Coordinate.X;
-        set => PointOnMap.Coordinate.X = value;
+        get => PointOnMap.X;
+        set => PointOnMap.X = value;
     }
 
     public override double Latitude
     {
-        get => PointOnMap.Coordinate.Y;
-        set => PointOnMap.Coordinate.Y = value;
+        get => PointOnMap.Y;
+        set => PointOnMap.Y = value;
     }
 }

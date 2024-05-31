@@ -29,7 +29,7 @@ public class ReadOnlyPointService(
 
         var pointsAssessments = await repository.PointsOfInterest.GetPointOfInterestsAssessmentsAsync
         (
-            ids: pointsInRadius.Select(x => x.Id).Distinct().ToArray(),
+            pointIds: pointsInRadius.Select(x => x.Id).Distinct().ToArray(),
             cancellationToken: tokenProvider.CancellationToken
         );
 
@@ -68,7 +68,7 @@ public class ReadOnlyPointService(
 
         var pointsAssessments = await repository.PointsOfInterest.GetPointOfInterestsAssessmentsAsync
         (
-            ids: ownPointsOfInterest.Select(x => x.Id).Distinct().ToArray(),
+            pointIds: ownPointsOfInterest.Select(x => x.Id).Distinct().ToArray(),
             cancellationToken: tokenProvider.CancellationToken
         );
 

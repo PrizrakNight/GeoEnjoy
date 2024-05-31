@@ -2,18 +2,13 @@
 using GeoEnjoy.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GeoEnjoy.EntityFrameworkCore;
+namespace GeoEnjoy.EntityFrameworkCore.Repositories;
 
-public class EfCoreRepository<T> : EfCoreSpecRepository<T>, IRepository<T>
+public class EfCoreRepository<T>(DbContext context,
+    IEntityExpands<T> expands,
+    IEntitySortings<T> sortings) : EfCoreSpecRepository<T>(context, expands, sortings), IRepository<T>
     where T : class, IDomainEntity
 {
-    public EfCoreRepository(DbContext context,
-        IEntityExpands<T> expands,
-        IEntitySortings<T> sortings)
-        : base(context, expands, sortings)
-    {
-    }
-
     public T Add(T entity)
     {
         DbSet.Add(entity);

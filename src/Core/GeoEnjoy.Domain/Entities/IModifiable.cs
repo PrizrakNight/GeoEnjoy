@@ -1,7 +1,6 @@
-﻿namespace GeoEnjoy.Domain.Entities
+﻿namespace GeoEnjoy.Domain.Entities;
+
+public interface IModifiable
 {
-    public interface IModifiable
-    {
-        DateTime? Updated { get; set; }
-    }
+    DateTime? Updated { get; set; }
 }

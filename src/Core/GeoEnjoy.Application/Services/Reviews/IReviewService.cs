@@ -8,9 +8,9 @@ public interface IReviewService
 {
     Task<Result<ReviewResponse>> AddAsync(Guid pointId, AddReviewRequest request);
 
-    Task<Result<List<ReviewResponse>>> GetAsync(Guid pointId, GetReviewsRequest request);
+    Task<Result> DeleteAsync(Guid id);
+
+    Task<Result<List<ReviewResponse>>> GetAllAsync(Guid pointId, GetReviewsRequest request);
 
     Task<Result<ReviewResponse?>> GetOwnReviewAsync(Guid pointId);
-
-    Task<Result> DeleteAsync(Guid id);
 }

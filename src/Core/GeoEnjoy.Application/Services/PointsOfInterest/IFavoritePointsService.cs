@@ -9,5 +9,5 @@ public interface IFavoritePointsService
     Task<Result> AddAsync(Guid pointId);
     Task<Result> RemoveAsync(Guid pointId);
 
-    Task<Result<List<PointOfInterestResponse>>> GetAsync(GetOwnPointsOfInterestRequest request);
+    Task<Result<List<PointOfInterestResponse>>> GetOwnAsync(GetOwnPointsOfInterestRequest request);
 }

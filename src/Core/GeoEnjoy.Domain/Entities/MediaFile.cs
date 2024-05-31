@@ -1,12 +1,11 @@
-﻿namespace GeoEnjoy.Domain.Entities
+﻿namespace GeoEnjoy.Domain.Entities;
+
+public class MediaFile : IDomainEntity
 {
-    public class MediaFile : IDomainEntity
-    {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; }
+    public Guid Id { get; set; }
+    public Guid UserId { get; set; }
 
-        public string ExternalId { get; set; } = null!;
+    public string ExternalId { get; set; } = null!;
 
-        public long Size { get; set; }
-    }
+    public long Size { get; set; }
 }

@@ -55,7 +55,7 @@ public class FavoritePointsService(
         return Result.Ok();
     }
 
-    public async Task<Result<List<PointOfInterestResponse>>> GetAsync(GetOwnPointsOfInterestRequest request)
+    public async Task<Result<List<PointOfInterestResponse>>> GetOwnAsync(GetOwnPointsOfInterestRequest request)
     {
         var currentUserId = currentUser.Id;
 
@@ -69,6 +69,11 @@ public class FavoritePointsService(
             pagination: request.Pagination,
             cancellationToken: tokenProvider.CancellationToken
         );
+
+        if (favoritePoints.Count == 0)
+        {
+            return Result.Ok(new List<PointOfInterestResponse>());
+        }
 
         var favoritePointsIds = favoritePoints
             .Select(x => x.PointId)

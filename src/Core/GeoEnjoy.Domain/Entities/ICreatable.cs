@@ -1,7 +1,6 @@
-﻿namespace GeoEnjoy.Domain.Entities
+﻿namespace GeoEnjoy.Domain.Entities;
+
+public interface ICreatable
 {
-    public interface ICreatable
-    {
-        DateTime Created { get; set; }
-    }
+    DateTime Created { get; set; }
 }

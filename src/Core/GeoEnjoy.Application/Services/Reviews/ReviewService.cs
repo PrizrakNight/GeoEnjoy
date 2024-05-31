@@ -85,7 +85,7 @@ public class ReviewService(
         return Result.Ok();
     }
 
-    public async Task<Result<List<ReviewResponse>>> GetAsync(Guid pointId, GetReviewsRequest request)
+    public async Task<Result<List<ReviewResponse>>> GetAllAsync(Guid pointId, GetReviewsRequest request)
     {
         var pointNotExists = await repository.PointsOfInterest.ExistsByIdAsync(pointId) == false;
 

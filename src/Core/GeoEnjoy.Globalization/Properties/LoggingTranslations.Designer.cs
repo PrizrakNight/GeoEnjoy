@@ -8,74 +8,73 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeoEnjoy.Globalization.Properties {
-    using System;
+namespace GeoEnjoy.Globalization.Properties; 
+using System;
+
+
+/// <summary>
+///   Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+/// </summary>
+// Этот класс создан автоматически классом StronglyTypedResourceBuilder
+// с помощью такого средства, как ResGen или Visual Studio.
+// Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
+// с параметром /str или перестройте свой проект VS.
+[global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+[global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+public class LoggingTranslations {
     
+    private static global::System.Resources.ResourceManager resourceMan;
+    
+    private static global::System.Globalization.CultureInfo resourceCulture;
+    
+    [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
+    internal LoggingTranslations() {
+    }
     
     /// <summary>
-    ///   Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+    ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
     /// </summary>
-    // Этот класс создан автоматически классом StronglyTypedResourceBuilder
-    // с помощью такого средства, как ResGen или Visual Studio.
-    // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
-    // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class LoggingTranslations {
-        
-        private static global::System.Resources.ResourceManager resourceMan;
-        
-        private static global::System.Globalization.CultureInfo resourceCulture;
-        
-        [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal LoggingTranslations() {
+    [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+    public static global::System.Resources.ResourceManager ResourceManager {
+        get {
+            if (object.ReferenceEquals(resourceMan, null)) {
+                global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoEnjoy.Globalization.Properties.LoggingTranslations", typeof(LoggingTranslations).Assembly);
+                resourceMan = temp;
+            }
+            return resourceMan;
         }
-        
-        /// <summary>
-        ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeoEnjoy.Globalization.Properties.LoggingTranslations", typeof(LoggingTranslations).Assembly);
-                    resourceMan = temp;
-                }
-                return resourceMan;
-            }
+    }
+    
+    /// <summary>
+    ///   Перезаписывает свойство CurrentUICulture текущего потока для всех
+    ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+    /// </summary>
+    [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+    public static global::System.Globalization.CultureInfo Culture {
+        get {
+            return resourceCulture;
         }
-        
-        /// <summary>
-        ///   Перезаписывает свойство CurrentUICulture текущего потока для всех
-        ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
-        /// </summary>
-        [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
-            get {
-                return resourceCulture;
-            }
-            set {
-                resourceCulture = value;
-            }
+        set {
+            resourceCulture = value;
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Social activity &apos;{0}&apos; was deleted by user &apos;{1}&apos; from entity &apos;{2}&apos;.
-        /// </summary>
-        public static string SocialActivityDeletedByUser {
-            get {
-                return ResourceManager.GetString("SocialActivityDeletedByUser", resourceCulture);
-            }
+    }
+    
+    /// <summary>
+    ///   Ищет локализованную строку, похожую на Social activity &apos;{0}&apos; was deleted by user &apos;{1}&apos; from entity &apos;{2}&apos;.
+    /// </summary>
+    public static string SocialActivityDeletedByUser {
+        get {
+            return ResourceManager.GetString("SocialActivityDeletedByUser", resourceCulture);
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Social activity &apos;{0}&apos; is set by user &apos;{1}&apos; for entity &apos;{2}&apos;.
-        /// </summary>
-        public static string SocialActivitySetByUser {
-            get {
-                return ResourceManager.GetString("SocialActivitySetByUser", resourceCulture);
-            }
+    }
+    
+    /// <summary>
+    ///   Ищет локализованную строку, похожую на Social activity &apos;{0}&apos; is set by user &apos;{1}&apos; for entity &apos;{2}&apos;.
+    /// </summary>
+    public static string SocialActivitySetByUser {
+        get {
+            return ResourceManager.GetString("SocialActivitySetByUser", resourceCulture);
         }
     }
 }

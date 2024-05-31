@@ -13,8 +13,8 @@ public class PointOfInterest : ISocialActivityEntity,
 
     public string? Description { get; set; }
 
-    public double Longitude { get; set; }
-    public double Latitude { get; set; }
+    public virtual double Longitude { get; set; }
+    public virtual double Latitude { get; set; }
 
     public DateTime Created { get; set; }
 
@@ -22,4 +22,5 @@ public class PointOfInterest : ISocialActivityEntity,
 
     public virtual ICollection<Review>? Reviews { get; set; }
     public virtual ICollection<SocialActivity>? SocialActivities { get; set; }
+    public virtual ICollection<FavoritePointOfInterest>? FavoritePointOfInterests { get; set; }
 }

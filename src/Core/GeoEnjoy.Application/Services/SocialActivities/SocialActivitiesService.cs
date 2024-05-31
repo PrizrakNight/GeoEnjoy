@@ -5,7 +5,6 @@ using GeoEnjoy.Application.Repositories;
 using GeoEnjoy.Domain.Entities;
 using GeoEnjoy.Globalization.Properties;
 using Microsoft.Extensions.Logging;
-using System.Diagnostics;
 
 namespace GeoEnjoy.Application.Services.SocialActivities;
 
